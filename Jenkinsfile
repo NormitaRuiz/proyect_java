@@ -7,7 +7,7 @@ pipeline {
             stage('Build') {
 
                     steps {
-                        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/elbvis/proyect_java.git']])
+                        checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/NormitaRuiz/proyect_java.git']])
 						sh 'mvn clean install -DskipTests -P dev'
 						archiveArtifacts artifacts: 'target/*.jar'
                     }
@@ -15,7 +15,6 @@ pipeline {
         stage('Snyk'){
             steps {
                 script {
-                    snykSecurity organisation: 'elbvis', projectName: '${JOB_NAME}', 
                      severity: 'high', snykInstallation: 'snyk@latest', 
                      snykTokenId: 'organisation-snyk-api-token', targetFile: 'pom.xml'
                 }
