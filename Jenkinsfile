@@ -14,11 +14,14 @@ pipeline {
             }
         stage('Snyk'){
             steps {
-                script {
-                     severity: 'high', snykInstallation: 'snyk@latest', 
-                     snykTokenId: 'organisation-snyk-api-token', targetFile: 'pom.xml'
-                }
-            }
+	        echo 'Testing...'
+	        snykSecurity(
+	          snykInstallation: 'snyk@latest'
+	          snykTokenId: 'organisation-snyk-api-token'
+	          severity: 'high'
+		  targetFile: 'pom.xml'
+	        )
+      		}
         }
 
    stage('SonarQube') {
