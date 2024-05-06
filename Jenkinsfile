@@ -18,8 +18,6 @@ pipeline {
 	        snykSecurity(
 	          snykInstallation: 'snyk@latest'
 	          snykTokenId: 'organisation-snyk-api-token'
-	          severity: 'high'
-		  targetFile: 'pom.xml'
 	        )
       		}
         }
