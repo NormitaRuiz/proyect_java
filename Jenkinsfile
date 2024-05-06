@@ -16,7 +16,7 @@ pipeline {
             steps {
 	        echo 'Testing...'
 	        snykSecurity(
-	          snykInstallation: 'snyk@latest'
+	          snykInstallation: 'snyk@latest',
 	          snykTokenId: 'organisation-snyk-api-token'
 	        )
       		}
